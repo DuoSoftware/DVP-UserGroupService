@@ -15,6 +15,7 @@ var secret = require('dvp-common-lite/Authentication/Secret.js');
 var authorization = require('dvp-common-lite/Authentication/Authorization.js');
 
 var mongomodels = require('dvp-mongomodels');
+var healthcheck = require('dvp-healthcheck/DBHealthChecker');
 
 var port = config.Host.port || 3000;
 var host = config.Host.vdomain || 'localhost';
@@ -27,6 +28,9 @@ app.use(passport.session());
 app.use(cookieParser());
 app.use(errorhandler({ dumpExceptions: true, showStack: true }));
 app.use(cors());
+
+var hc = new healthcheck(app, {mongo: mongomodels.connection});
+hc.Initiate();
 
 app.post('/DVP/API/:version/UserGroup',jwt({secret: secret.Secret}), authorization({resource:"userGroup", action:"write"}), userGroupService.CreateUserGroup);
 app.get('/DVP/API/:version/UserGroups',jwt({secret: secret.Secret}), authorization({resource:"userGroup", action:"read"}), userGroupService.GetGroupsAndUsers);
