@@ -5,8 +5,6 @@ var logger = require('dvp-common-lite/LogHandler/CommonLogHandler.js').logger;
 var UserGroup = require('dvp-mongomodels/model/UserGroup').UserGroup;
 var messageFormatter = require('dvp-common-lite/CommonMessageGenerator/ClientMessageJsonFormatter.js');
 var User = require('dvp-mongomodels/model/User');
-var regex = require('regex');
-var util = require('util');
 var _ = require('lodash');
 var UserAccount = require('dvp-mongomodels/model/UserAccount');
 
