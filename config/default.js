@@ -7,7 +7,7 @@ module.exports = {
     password: "",
     sentinels: {
       hosts: "SENTNELS_URL",
-      port: 16389,
+      port: 6379,
       name: "redis-cluster"
     }
   },
@@ -19,7 +19,7 @@ module.exports = {
     password: "",
     sentinels: {
       hosts: "SENTNELS_URL",
-      port: 16389,
+      port: 6379,
       name: "redis-cluster"
     }
   },
